@@ -1,62 +1,31 @@
 package Stadtplan.Model;
+/*
+*Unfall Class done like the give Domainmodel
+ */
+public class Unfall extends Verkehrsstoerung {
+    private boolean isSecured;
 
-import java.util.ArrayList;
+    public Unfall(StrassenAbschnitt affectedStreet, int length, boolean isSecured){
+        super.length = length;
+        super.affectedStreet = affectedStreet;
+        this.isSecured = isSecured;
+    }
 
-public class Unfall {
-	
-	private StrassenAbschnitt effectedStreet;
-	private ArrayList<Knoten> knoten;
-	private ArrayList<StrassenAbschnitt> affectedStreets;
-	private ArrayList<StrassenAbschnitt> dbStreets;
+    @Override
+    public StrassenAbschnitt getAffectedStreet() {
+        return super.affectedStreet;
+    }
 
-	private boolean isSecured;
+    @Override
+    public int getLength() {
+        return super.length;
+    }
 
-	public Unfall(StrassenAbschnitt effectedStreet, boolean isSecured, ArrayList<StrassenAbschnitt> dbStreets,ArrayList<Knoten> knoten) {
-		
-		this.setEffectedStreet(effectedStreet);
-		this.setSecured(isSecured);
-		this.dbStreets = dbStreets;
-		this.affectedStreets = new ArrayList<StrassenAbschnitt>();
-		this.knoten = knoten;
-		
-	
-	}
+    public void setSecured(boolean isSecured){
+        this.isSecured = isSecured;
+    }
 
-	public StrassenAbschnitt getEffectedStreet() {
-		return effectedStreet;
-	}
-
-	public void setEffectedStreet(StrassenAbschnitt effectedStreet) {
-		this.effectedStreet = effectedStreet;
-	}
-
-	public boolean isSecured() {
-		return isSecured;
-	}
-
-	public void setSecured(boolean isSecured) {
-		this.isSecured = isSecured;
-	}
-	
-	public void getAffectedStreets() {
-		
-			
-			for(Knoten k : this.knoten) {
-				
-				for(StrassenAbschnitt s : this.dbStreets) {
-					
-					for(Knoten ss : s.getKnots()) {
-						
-						if(ss.getUniqueID().equals(k.getUniqueID()) && !this.affectedStreets.contains(s)) {
-								
-							this.affectedStreets.add(s);
-						}
-					}
-				
-			}
-		}
-			this.affectedStreets.forEach(street -> System.out.print(street.getName() +" "));
-
-	}
-
+    public boolean isSecured(){
+        return isSecured;
+    }
 }

@@ -6,6 +6,7 @@ import java.util.UUID;
 public class StrassenAbschnitt {
 
 	private String name;
+	private Verkehrsstoerung verkehrsstoerung;
 	private ArrayList<Knoten> knots;
 	private String uniqueID;
 	private  boolean isOneWay;
@@ -31,8 +32,9 @@ public class StrassenAbschnitt {
 		this.name = name;
 	}
 
-
-
+	public void setVerkehrsstoerung(Verkehrsstoerung verkehrsstoerung){
+		this.verkehrsstoerung = verkehrsstoerung;
+	}
 
 
 	public boolean isOneWay() {

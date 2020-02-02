@@ -5,12 +5,16 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Stadtplan.Model.StrassenAbschnitt;
 import Stadtplan.Model.StreetNetwork;
+import Stadtplan.Controller.Controller;
 
 
 public class ReportAccidentUI extends JFrame{
 
     private StreetNetwork streetNetwork = new StreetNetwork();
+    private Controller controller = new Controller();
     private String[] streetNames = { "Sesame Street", "15 Yemen Road", "Diagon Alley" };
     private String[] startNodes = { "1", "2", "3", "4", "5" };
     private String[] endNodes = { "1", "2", "3", "4", "5" };
@@ -88,8 +92,18 @@ public class ReportAccidentUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == submitButton) {
+                    String name = streetName.getSelectedItem().toString();
+                    boolean sercured = isSecuredCheckBox.isSelected();
+                    StrassenAbschnitt strassenAbschnitt = streetNetwork.getStreetByName(name);
+                    if(strassenAbschnitt == null){
+                        JOptionPane.showMessageDialog(submitButton,
+                                "Fehler!");
+                        return;
+                    }
+                    controller.addUnfall(strassenAbschnitt,10,sercured);
+                    System.out.println(name+"\nIs Secured: "+sercured);
                     JOptionPane.showMessageDialog(submitButton,
-                            "Ihre Angaben werden gespeichert.");
+                            "Ihre Angaben wurden gespeichert.");
                 }
             }
         });

@@ -6,7 +6,7 @@ import java.util.List;
 public class StreetNetwork {
 	
 	public static ArrayList<Knoten> knots = new  ArrayList<Knoten>();
-	public static ArrayList<Unfall> unfaelle = new ArrayList<Unfall>();
+	public static ArrayList<Verkehrsstoerung> unfaelle = new ArrayList<Verkehrsstoerung>();
 	public static ArrayList<StrassenAbschnitt> streets = new  ArrayList<StrassenAbschnitt>();
 	private static List<String> streetNames = new ArrayList<String>();
 
@@ -23,6 +23,15 @@ public class StreetNetwork {
 				}
 			}
 		}
+	}
+
+	public StrassenAbschnitt getStreetByName(String name){
+		for(StrassenAbschnitt s : streets){
+			if(s.getName().equals(name)){
+				return s;
+			}
+		}
+		return null;
 	}
 
 	public ArrayList<Knoten> getKnots() {
@@ -64,41 +73,13 @@ public class StreetNetwork {
 		 return this.streetNames;
 		
 	}
-	
-	public void networkStatus() {
-		
-		if(unfaelle.size() > 0) {
-			System.out.print("There is accidents at the following streets: ");
-			System.out.println();
 
-
-		for(Unfall f : unfaelle) {
-		
-			f.getAffectedStreets();
-			System.out.print(" street and the current status is ");
-
-			if(f.isSecured()) {
-				System.out.print(" secured");
-
-			} else {
-				System.out.print(" NOT secured");
-
-			}
-
-			System.out.println();
-
-		  
-		}
-		} else {
-			
-			System.out.print("everything is ok");
-			
-		}
-
+	public void addUnfall(Unfall unfall){
+		unfaelle.add(unfall);
 	}
 	
-	public void addUnfall(StrassenAbschnitt street,boolean state) {
-		
-		unfaelle.add(new Unfall(street,state,streets,knots));
+	public void networkStatus() {
+
+
 	}
 }
