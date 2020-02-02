@@ -64,5 +64,12 @@ public class WelcomeView extends JFrame {
                 welcomeFrame.dispose();
             }
         });
+        showStreetNetworkButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new StreetsView();
+                welcomeFrame.dispose();
+            }
+        });
     }
 }

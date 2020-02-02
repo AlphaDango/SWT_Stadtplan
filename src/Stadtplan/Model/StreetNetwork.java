@@ -5,21 +5,20 @@ import java.util.List;
 
 public class StreetNetwork {
 	
-	public static ArrayList<Knoten> knots = new  ArrayList<Knoten>();
-	public static ArrayList<Verkehrsstoerung> unfaelle = new ArrayList<Verkehrsstoerung>();
-	public static ArrayList<StrassenAbschnitt> streets = new  ArrayList<StrassenAbschnitt>();
-	private static List<String> streetNames = new ArrayList<String>();
-
+	public static ArrayList<Knoten> knots = new  ArrayList<>();
+	public static ArrayList<Verkehrsstoerung> unfaelle = new ArrayList<>();
+	public static ArrayList<StrassenAbschnitt> streets = new  ArrayList<>();
+	private static List<String> streetNames = new ArrayList<>();
 
 	public StreetNetwork(){}
 	public StreetNetwork(ArrayList<StrassenAbschnitt> streets) {
 		setStreets(streets);
 		
-		for(StrassenAbschnitt s : this.streets) {
+		for(StrassenAbschnitt s : StreetNetwork.streets) {
 						
 			for(Knoten k : s.getKnots()) {
-				if(!this.knots.contains(k)) {
-					this.knots.add(k);
+				if(!knots.contains(k)) {
+					knots.add(k);
 				}
 			}
 		}
@@ -39,47 +38,31 @@ public class StreetNetwork {
 	}
 
 	public void setKnots(ArrayList<Knoten> knots) {
-		this.knots = knots;
+		StreetNetwork.knots = knots;
 	}
 
 	public ArrayList<StrassenAbschnitt> getStreets() {
-		
-		
 		return streets;
 	}
 
 	public void setStreets(ArrayList<StrassenAbschnitt> streets) {
-		this.streets = streets;
+		StreetNetwork.streets = streets;
 	}
 	
 	public void addStreet(StrassenAbschnitt street) {
-		
-		this.streets.add(street);
+		streets.add(street);
 	}
 	
 	public List<String> getStreetNames() {
-		
-
-		 this.streets.forEach(street -> {
-			 
-			 if(!streetNames.contains(street.getName())) {
-		 this.streetNames.add(street.getName());
-			 } else {
-				 
+		 streets.forEach(street -> {
+		 	if(!streetNames.contains(street.getName())) {
+		 		streetNames.add(street.getName());
 			 }
-		 
 		 });
-		 
-		 return this.streetNames;
-		
+		 return streetNames;
 	}
 
 	public void addUnfall(Unfall unfall){
 		unfaelle.add(unfall);
-	}
-	
-	public void networkStatus() {
-
-
 	}
 }
