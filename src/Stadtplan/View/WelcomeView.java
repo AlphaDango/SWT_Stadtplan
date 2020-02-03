@@ -49,6 +49,7 @@ public class WelcomeView extends JFrame {
         welcomeFrame.setSize(600,400);
         welcomeFrame.setLayout(null);
         welcomeFrame.setVisible(true);
+        welcomeFrame.setResizable(false);
         welcomeFrame.getContentPane().add(panel);
 
         //Listener

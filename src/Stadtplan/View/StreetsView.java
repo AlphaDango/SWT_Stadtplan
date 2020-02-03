@@ -109,6 +109,7 @@ public class StreetsView {
         streetViewFrame.setSize(600,400);
         streetViewFrame.setLayout(null);
         streetViewFrame.setVisible(true);
+        streetViewFrame.setResizable(false);
         streetViewFrame.getContentPane().add(panel);
 
         //Listner

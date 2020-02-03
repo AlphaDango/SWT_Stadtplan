@@ -73,6 +73,7 @@ public class ReportAccidentUI extends JFrame{
         reportAccident.add(isSecuredCheckBox);
         reportAccident.setSize(600,400);
         reportAccident.setLayout(null);
+        reportAccident.setResizable(false);
         reportAccident.setVisible(true);
 
         //Listeners
