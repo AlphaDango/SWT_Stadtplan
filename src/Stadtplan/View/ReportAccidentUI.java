@@ -19,7 +19,7 @@ public class ReportAccidentUI extends JFrame{
     private final JFrame reportAccident = new JFrame("Stadtplan-Goslar");
     private final JLabel title = new JLabel("Unfall Melden");
     private final JLabel chooseStreetLabel = new JLabel("Straßenname");
-    private JComboBox<String> streetName = new JComboBox<String>(streetNetwork.getStreetNames().toArray(new String[0]));
+    private JComboBox<String> streetName = new JComboBox<>(streetNetwork.getStreetNames().toArray(new String[0]));
     private final JLabel isSafeLabel = new JLabel("Unfall gesichert?");
     private final JLabel StartNode = new JLabel("Startknoten:");
     private final JLabel EndNode = new JLabel("Endknoten:");
@@ -76,41 +76,36 @@ public class ReportAccidentUI extends JFrame{
         reportAccident.setVisible(true);
 
         //Listeners
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == submitButton) {
-                    String name = streetName.getSelectedItem().toString();
-                    boolean sercured = isSecuredCheckBox.isSelected();
-                    try {
-                        int length = Integer.parseInt(lengthInput.getText());
-                    }catch (Exception exeption){
-                        JOptionPane.showMessageDialog(submitButton,
-                                "Ungültige Längenangabe!");
-                        lengthInput.setText("");
-                        return;
-                    }
-                    int length = Integer.parseInt(lengthInput.getText());
-                    StrassenAbschnitt strassenAbschnitt = streetNetwork.getStreetByName(name);
-                    if(strassenAbschnitt == null){
-                        JOptionPane.showMessageDialog(submitButton,
-                                "Fehler!");
-                        return;
-                    }
-                    controller.addUnfall(strassenAbschnitt,length,sercured);
-                    System.out.println(name+"\nIs Secured: "+sercured);
+        submitButton.addActionListener(e -> {
+            if (e.getSource() == submitButton) {
+                String name;
+                int length;
+                boolean sercured;
+                try {
+                    length = Integer.parseInt(lengthInput.getText());
+                    name = streetName.getSelectedItem().toString();
+                    sercured = isSecuredCheckBox.isSelected();
+                }catch (Exception exeption){
                     JOptionPane.showMessageDialog(submitButton,
-                            "Ihre Angaben wurden gespeichert.");
+                            "Ungültige Längenangabe!");
+                    lengthInput.setText("");
+                    return;
                 }
+                StrassenAbschnitt strassenAbschnitt = streetNetwork.getStreetByName(name);
+                if(strassenAbschnitt == null){
+                    JOptionPane.showMessageDialog(submitButton,
+                            "Fehler!");
+                    return;
+                }
+                controller.addUnfall(strassenAbschnitt,length,sercured);
+                JOptionPane.showMessageDialog(submitButton,
+                        "Ihre Angaben wurden gespeichert.");
             }
         });
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new WelcomeView();
-                reportAccident.dispose();
-            }
+        backButton.addActionListener(e -> {
+            new WelcomeView();
+            reportAccident.dispose();
         });
 
         reportAccident.addWindowListener(new WindowAdapter() {
