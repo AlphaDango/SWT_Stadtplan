@@ -20,9 +20,9 @@ public class StreetsView {
     private final JLabel title = new JLabel("Straßenübersicht");
     private final JButton returnButton = new JButton("Zurück");
     private final JPanel panel = new JPanel();
-    private final JLabel street0 = new JLabel(streetNetwork.getStreetNames().get(0));
-    private final JLabel street1 = new JLabel(streetNetwork.getStreetNames().get(1));
-    private final JLabel street2 = new JLabel(streetNetwork.getStreetNames().get(2));
+    private final JLabel street0 = new JLabel(streetNetwork.getStreetNames().get(0)+":");
+    private final JLabel street1 = new JLabel(streetNetwork.getStreetNames().get(1)+":");
+    private final JLabel street2 = new JLabel(streetNetwork.getStreetNames().get(2)+":");
     private JLabel street0Info, street1Info, street2Info;
 
     public StreetsView(){
@@ -47,10 +47,10 @@ public class StreetsView {
 
         strassenAbschnitt = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(0));
         if(strassenAbschnitt.getUnfall() == null){
-            street0Info = new JLabel("Ist Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
+            street0Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
         }else{
             Unfall unfall = strassenAbschnitt.getUnfall();
-            street0Info = new JLabel("Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
+            street0Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
         }
         street0Info.setBounds(20,90,450,300);
         street0Info.setVerticalAlignment(JLabel.TOP);
@@ -65,10 +65,10 @@ public class StreetsView {
 
         strassenAbschnitt = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(1));
         if(strassenAbschnitt.getUnfall() == null){
-            street1Info = new JLabel("Ist Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
+            street1Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
         }else{
             Unfall unfall = strassenAbschnitt.getUnfall();
-            street1Info = new JLabel("Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
+            street1Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
         }
         street1Info.setBounds(20,190,450,300);
         street1Info.setVerticalAlignment(JLabel.TOP);
@@ -82,10 +82,10 @@ public class StreetsView {
 
         strassenAbschnitt = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(2));
         if(strassenAbschnitt.getUnfall() == null){
-            street2Info = new JLabel("Ist Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
+            street2Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
         }else{
             Unfall unfall = strassenAbschnitt.getUnfall();
-            street2Info = new JLabel("Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
+            street2Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
         }
         street2Info.setBounds(20,290,450,300);
         street2Info.setVerticalAlignment(JLabel.TOP);
@@ -112,12 +112,9 @@ public class StreetsView {
         streetViewFrame.getContentPane().add(panel);
 
         //Listner
-        returnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new WelcomeView();
-                streetViewFrame.dispose();
-            }
+        returnButton.addActionListener(e -> {
+            new WelcomeView();
+            streetViewFrame.dispose();
         });
         streetViewFrame.addWindowListener(new WindowAdapter() {
             @Override
