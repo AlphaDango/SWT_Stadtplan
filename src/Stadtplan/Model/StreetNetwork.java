@@ -11,18 +11,6 @@ public class StreetNetwork {
 	private static List<String> streetNames = new ArrayList<>();
 
 	public StreetNetwork(){}
-	public StreetNetwork(ArrayList<StrassenAbschnitt> streets) {
-		setStreets(streets);
-		
-		for(StrassenAbschnitt s : StreetNetwork.streets) {
-						
-			for(Knoten k : s.getKnots()) {
-				if(!knots.contains(k)) {
-					knots.add(k);
-				}
-			}
-		}
-	}
 
 	public StrassenAbschnitt getStreetByName(String name){
 		for(StrassenAbschnitt s : streets){
@@ -47,12 +35,20 @@ public class StreetNetwork {
 
 	public void setStreets(ArrayList<StrassenAbschnitt> streets) {
 		StreetNetwork.streets = streets;
+		for(StrassenAbschnitt s : StreetNetwork.streets) {
+
+			for(Knoten k : s.getKnots()) {
+				if(!knots.contains(k)) {
+					knots.add(k);
+				}
+			}
+		}
 	}
 	
 	public void addStreet(StrassenAbschnitt street) {
 		streets.add(street);
 	}
-	
+
 	public List<String> getStreetNames() {
 		 streets.forEach(street -> {
 		 	if(!streetNames.contains(street.getName())) {
