@@ -3,17 +3,40 @@ package Stadtplan.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* The StreetNetwork class.
+* In here, all the nodes and streets are safed.
+* Streetnames are safed in this class aswell.
+ */
 public class StreetNetwork {
 	
-	public static ArrayList<Knoten> knots = new  ArrayList<>();
-	public static ArrayList<Verkehrsstoerung> unfaelle = new ArrayList<>();
-	public static ArrayList<StrassenAbschnitt> streets = new  ArrayList<>();
+	public static ArrayList<Node> nodes = new  ArrayList<>();
+	public static ArrayList<StreetSection> streets = new  ArrayList<>();
 	private static List<String> streetNames = new ArrayList<>();
 
 	public StreetNetwork(){}
 
-	public StrassenAbschnitt getStreetByName(String name){
-		for(StrassenAbschnitt s : getStreets()){
+	/*
+	* Method to fill an instance of this class with
+	* given streets and their nodes.
+	 */
+	public void setStreets(ArrayList<StreetSection> streets) {
+		StreetNetwork.streets = streets;
+		for(StreetSection s : StreetNetwork.streets) {
+
+			for(Node k : s.getNodes()) {
+				if(!nodes.contains(k)) {
+					nodes.add(k);
+				}
+			}
+		}
+	}
+
+	/*
+	* Method to get the safed street with a given name.
+	 */
+	public StreetSection getStreetByName(String name){
+		for(StreetSection s : getStreets()){
 			if(s.getName().equals(name)){
 				return s;
 			}
@@ -21,44 +44,35 @@ public class StreetNetwork {
 		return null;
 	}
 
-	public ArrayList<Knoten> getKnots() {
-		return knots;
+	/*
+	* Getter and setter methods.
+	 */
+	public ArrayList<Node> getNodes() {
+		return nodes;
 	}
 
-	public void setKnots(ArrayList<Knoten> knots) {
-		StreetNetwork.knots = knots;
+	public void setNodes(ArrayList<Node> nodes) {
+		StreetNetwork.nodes = nodes;
 	}
 
-	public ArrayList<StrassenAbschnitt> getStreets() {
+	public ArrayList<StreetSection> getStreets() {
 		return streets;
 	}
-
-	public void setStreets(ArrayList<StrassenAbschnitt> streets) {
-		StreetNetwork.streets = streets;
-		for(StrassenAbschnitt s : StreetNetwork.streets) {
-
-			for(Knoten k : s.getKnots()) {
-				if(!knots.contains(k)) {
-					knots.add(k);
-				}
-			}
-		}
-	}
 	
-	public void addStreet(StrassenAbschnitt street) {
+	public void addStreet(StreetSection street) {
 		streets.add(street);
 	}
 
+	/*
+	* Getter method to get all street names.
+	* Also updates the street names of this class.
+	 */
 	public List<String> getStreetNames() {
-		 streets.forEach(street -> {
-		 	if(!streetNames.contains(street.getName())) {
-		 		streetNames.add(street.getName());
-			 }
-		 });
-		 return streetNames;
-	}
-
-	public void addAccident(Accident accident){
-		unfaelle.add(accident);
+		streets.forEach(street -> {
+			if(!streetNames.contains(street.getName())) {
+				streetNames.add(street.getName());
+			}
+		});
+		return streetNames;
 	}
 }

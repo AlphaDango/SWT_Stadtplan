@@ -1,7 +1,5 @@
 package Stadtplan.View;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
@@ -9,14 +7,18 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 
+/*
+* This is the Main menu GUI.
+* In here the user can decide if they want
+* to report an traffic accident or if they want
+* to look up the current street status.
+ */
 public class WelcomeView extends JFrame {
 
     private final JFrame welcomeFrame = new JFrame("Stadtplan-Goslar");
     private final JLabel welcomeLabel = new JLabel("Willkommen zum Stadtplan-Goslar");
     private final JButton showStreetNetworkButton = new JButton("Straßennetz Anzeigen");
     private final JButton reportAccidentButton = new JButton("Unfall Melden");
-    private final ImageIcon ii = new ImageIcon();
-    private final JLabel image_label= new JLabel(ii);
     private final JPanel panel = new JPanel();
 
     public WelcomeView(){
@@ -37,7 +39,6 @@ public class WelcomeView extends JFrame {
 
         //Init panel
         panel.setPreferredSize(new Dimension(600,900));
-        panel.add(image_label);
         panel.setVisible(true);
         panel.setSize(200, 200);
         panel.setBounds(350, 80, 200, 200);

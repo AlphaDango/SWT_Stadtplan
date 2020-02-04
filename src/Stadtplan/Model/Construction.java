@@ -2,16 +2,16 @@ package Stadtplan.Model;
 /*
 *Unused
  */
-public class Baustelle extends Verkehrsstoerung {
+public class Construction extends TrafficDisruption {
     private String finishDate;
 
-    public Baustelle(int length, String finishDate){
+    public Construction(int length, String finishDate){
         super.length = length;
         this.finishDate = finishDate;
     }
 
     @Override
-    public StrassenAbschnitt getAffectedStreet() {
+    public StreetSection getAffectedStreet() {
         return super.affectedStreet;
     }
 

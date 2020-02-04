@@ -1,18 +1,21 @@
 package JUnit.Test;
 
 import Stadtplan.Main;
-import Stadtplan.Model.StrassenAbschnitt;
+import Stadtplan.Model.StreetSection;
 import Stadtplan.Model.StreetNetwork;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+/*
+*JUnit testing class to test some Methods
+* used in the StreeNetwork class.
+ */
 public class StreetNetworkTest {
 
     private StreetNetwork streetNetwork = new StreetNetwork();
-    private StrassenAbschnitt strassenAbschnitt;
+    private StreetSection streetSection;
 
     @BeforeClass
     public static void fillData(){
@@ -21,13 +24,13 @@ public class StreetNetworkTest {
 
     @Test
     public void TestGetStreetByName() {
-        strassenAbschnitt = streetNetwork.getStreetByName("Hagenweg");
-        assertEquals(strassenAbschnitt.getName(),"Hagenweg");
+        streetSection = streetNetwork.getStreetByName("Hagenweg");
+        assertEquals(streetSection.getName(),"Hagenweg");
     }
 
     @Test
     public void FailGetStreetByName(){
-        strassenAbschnitt = streetNetwork.getStreetByName("Birkenstrasse");
-        assertNull(strassenAbschnitt);
+        streetSection = streetNetwork.getStreetByName("Birkenstrasse");
+        assertNull(streetSection);
     }
 }

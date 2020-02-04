@@ -1,18 +1,20 @@
 package Stadtplan.Model;
 /*
-*Unfall Class done like the give Domainmodel
+* The TrafficDisruption class.
+* Details about the Traffic accident
+* are safed in instances of this class.
  */
-public class Accident extends Verkehrsstoerung {
+public class TrafficAccident extends TrafficDisruption {
     private boolean isSecured;
 
-    public Accident(StrassenAbschnitt affectedStreet, int length, boolean isSecured){
+    public TrafficAccident(StreetSection affectedStreet, int length, boolean isSecured){
         super.length = length;
         super.affectedStreet = affectedStreet;
         this.isSecured = isSecured;
     }
 
     @Override
-    public StrassenAbschnitt getAffectedStreet() {
+    public StreetSection getAffectedStreet() {
         return super.affectedStreet;
     }
 

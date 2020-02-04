@@ -4,11 +4,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
 import Stadtplan.Model.StreetNetwork;
 import Stadtplan.Controller.Controller;
 
-
+/*
+* GUI im wich the user is able to input
+* data of a n traffic accident.
+ */
 public class ReportAccidentUI extends JFrame{
 
     private StreetNetwork streetNetwork = new StreetNetwork();
@@ -28,7 +32,7 @@ public class ReportAccidentUI extends JFrame{
     private JTextField lengthInput = new JTextField("",5);
 
     public ReportAccidentUI(){
-        //Init title
+        //Init title label
         title.setBounds(180,20,450,300);
         title.setVerticalAlignment(JLabel.TOP);
         title.setFont(new Font("Verdana", Font.PLAIN, 25));
@@ -71,11 +75,10 @@ public class ReportAccidentUI extends JFrame{
         reportAccident.setVisible(true);
 
         //Listeners
-
         submitButton.addActionListener(e -> {
-            String name = streetName.getSelectedItem().toString();
+            String name = Objects.requireNonNull(streetName.getSelectedItem()).toString();
             boolean sercured = isSecuredCheckBox.isSelected();
-            if(!controller.reportAccident(name,lengthInput.getText(),sercured)){
+            if(!controller.reportTrafficAccident(name,lengthInput.getText(),sercured)){
                 JOptionPane.showMessageDialog(null,
                         "Ungültige Längenangabe!\nBitte die Länge in ganzen Zahlen eingeben.");
             }else{
@@ -86,8 +89,13 @@ public class ReportAccidentUI extends JFrame{
             }
         });
 
+        /*
+        * Action listner of the backButton.
+        * The user will be asked if he is sure to cancel his input.
+         */
         backButton.addActionListener(e -> {
-            int reply = JOptionPane.showConfirmDialog(null,"Möchtest du deine Angaben verwerfen?",null,JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null,
+                    "Möchtest du deine Angaben verwerfen?",null,JOptionPane.YES_NO_OPTION);
             if(reply == JOptionPane.YES_OPTION){
                 new WelcomeView();
                 reportAccident.dispose();
