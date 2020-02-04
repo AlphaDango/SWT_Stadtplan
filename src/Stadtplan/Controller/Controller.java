@@ -21,7 +21,7 @@ public class Controller {
         }catch (Exception e){
             return false;
         }
-        if(strassenAbschnitt == null)
+        if(strassenAbschnitt == null || int_length > 1)
             return false;
         Accident accident = new Accident(strassenAbschnitt,int_length,state);
         streetNetwork.addAccident(accident);

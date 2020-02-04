@@ -26,7 +26,7 @@ public class ReportAccidentUI extends JFrame{
     private final JLabel lengthLabel = new JLabel("Unfallänge:");
     private final JCheckBox isSecuredCheckBox = new JCheckBox("Ja");
     private final JButton submitButton=new JButton("Bestätigen");
-    private final JButton backButton = new JButton("Zurück");
+    private final JButton backButton = new JButton("Verwerfen");
     private JTextField lengthInput = new JTextField("",5);
     private ButtonGroup buttonGroup = new ButtonGroup();
 
@@ -92,8 +92,11 @@ public class ReportAccidentUI extends JFrame{
         });
 
         backButton.addActionListener(e -> {
-            new WelcomeView();
-            reportAccident.dispose();
+            int reply = JOptionPane.showConfirmDialog(null,"Möchtest du deine Angaben verwerfen?",null,JOptionPane.YES_NO_OPTION);
+            if(reply == JOptionPane.YES_OPTION){
+                new WelcomeView();
+                reportAccident.dispose();
+            }
         });
 
         reportAccident.addWindowListener(new WindowAdapter() {
