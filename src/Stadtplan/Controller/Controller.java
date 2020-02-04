@@ -13,9 +13,13 @@ public class Controller {
     * to the StreetNetwork instance and
     * the used street instance
      */
-    public void addUnfall(StrassenAbschnitt street, int length, boolean state) {
-        Unfall unfall = new Unfall(street,length,state);
+    public boolean addUnfall(String streetname, int length, boolean state) {
+        StrassenAbschnitt strassenAbschnitt = streetNetwork.getStreetByName(streetname);
+        if(strassenAbschnitt == null)
+            return false;
+        Unfall unfall = new Unfall(strassenAbschnitt,length,state);
         streetNetwork.addUnfall(unfall);
-        street.setVerkehrsstoerung(unfall);
+        strassenAbschnitt.setVerkehrsstoerung(unfall);
+        return true;
     }
 }

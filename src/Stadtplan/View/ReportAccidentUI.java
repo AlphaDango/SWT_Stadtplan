@@ -73,31 +73,28 @@ public class ReportAccidentUI extends JFrame{
         reportAccident.add(isSecuredCheckBox);
         reportAccident.setSize(600,400);
         reportAccident.setLayout(null);
+        reportAccident.setLocationRelativeTo(null);
         reportAccident.setVisible(true);
 
         //Listeners
         submitButton.addActionListener(e -> {
-            if (e.getSource() == submitButton) {
-                String name;
-                int length;
-                boolean sercured;
-                try {
-                    length = Integer.parseInt(lengthInput.getText());
-                    name = streetName.getSelectedItem().toString();
-                    sercured = isSecuredCheckBox.isSelected();
-                }catch (Exception exeption){
-                    JOptionPane.showMessageDialog(submitButton,
-                            "Ungültige Längenangabe!");
-                    lengthInput.setText("");
-                    return;
-                }
-                StrassenAbschnitt strassenAbschnitt = streetNetwork.getStreetByName(name);
-                if(strassenAbschnitt == null){
-                    JOptionPane.showMessageDialog(submitButton,
-                            "Fehler!");
-                    return;
-                }
-                controller.addUnfall(strassenAbschnitt,length,sercured);
+            String name;
+            int length;
+            boolean sercured;
+            try {
+                length = Integer.parseInt(lengthInput.getText());
+                name = streetName.getSelectedItem().toString();
+                sercured = isSecuredCheckBox.isSelected();
+            }catch (Exception exeption){
+                JOptionPane.showMessageDialog(submitButton,
+                        "Ungültige Längenangabe!");
+                lengthInput.setText("");
+                return;
+            }
+            if(!controller.addUnfall(name,length,sercured)){
+                JOptionPane.showMessageDialog(submitButton,
+                        "Fehler!");
+            }else{
                 JOptionPane.showMessageDialog(submitButton,
                         "Ihre Angaben wurden gespeichert.");
             }

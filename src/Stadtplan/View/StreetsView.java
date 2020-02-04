@@ -108,6 +108,7 @@ public class StreetsView {
         streetViewFrame.add(street2Info);
         streetViewFrame.setSize(600,400);
         streetViewFrame.setLayout(null);
+        streetViewFrame.setLocationRelativeTo(null);
         streetViewFrame.setVisible(true);
         streetViewFrame.getContentPane().add(panel);
 

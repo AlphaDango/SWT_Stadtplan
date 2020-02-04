@@ -48,6 +48,7 @@ public class WelcomeView extends JFrame {
         welcomeFrame.add(welcomeLabel);
         welcomeFrame.setSize(600,400);
         welcomeFrame.setLayout(null);
+        welcomeFrame.setLocationRelativeTo(null);
         welcomeFrame.setVisible(true);
         welcomeFrame.getContentPane().add(panel);
 
@@ -58,18 +59,13 @@ public class WelcomeView extends JFrame {
                 System.exit(0);
             }
         });
-        reportAccidentButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                new ReportAccidentUI();
-                welcomeFrame.dispose();
-            }
+        reportAccidentButton.addActionListener(e -> {
+            new ReportAccidentUI();
+            welcomeFrame.dispose();
         });
-        showStreetNetworkButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new StreetsView();
-                welcomeFrame.dispose();
-            }
+        showStreetNetworkButton.addActionListener(e -> {
+            new StreetsView();
+            welcomeFrame.dispose();
         });
     }
 }
