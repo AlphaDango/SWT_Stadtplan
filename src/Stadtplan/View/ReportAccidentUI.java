@@ -19,20 +19,13 @@ public class ReportAccidentUI extends JFrame{
     private Controller controller = new Controller();
 
     private final JFrame reportAccident = new JFrame("Stadtplan-Goslar");
-    private final JLabel title = new JLabel("Unfall Melden");
-    private final JLabel chooseStreetLabel = new JLabel("Straßenname");
     private JComboBox<String> streetName = new JComboBox<>(streetNetwork.getStreetNames().toArray(new String[0]));
-    private final JLabel isSafeLabel = new JLabel("Unfall gesichert?");
-    private final JLabel StartNode = new JLabel("Startknoten:");
-    private final JLabel EndNode = new JLabel("Endknoten:");
-    private final JLabel lengthLabel = new JLabel("Unfallänge:");
     private final JCheckBox isSecuredCheckBox = new JCheckBox("Ja");
-    private final JButton submitButton=new JButton("Bestätigen");
-    private final JButton backButton = new JButton("Verwerfen");
     private JTextField lengthInput = new JTextField("",5);
 
     public ReportAccidentUI(){
         //Init title label
+        JLabel title = new JLabel("Unfall Melden");
         title.setBounds(180,20,450,300);
         title.setVerticalAlignment(JLabel.TOP);
         title.setFont(new Font("Verdana", Font.PLAIN, 25));
@@ -40,19 +33,24 @@ public class ReportAccidentUI extends JFrame{
         title.setForeground(Color.blue);
 
         //Init street dropdown
+        JLabel chooseStreetLabel = new JLabel("Straßenname");
         chooseStreetLabel.setBounds(50,70,150,30);
         streetName.setVisible(true);
         streetName.setBounds(180,75,150,20);
 
         //Init isSecuredCheckbox
+        JLabel isSafeLabel = new JLabel("Unfall gesichert?");
         isSafeLabel.setBounds(50,120,150,30);
         isSecuredCheckBox.setBounds(170,120,50,30);
 
         //Init buttons
+        JButton submitButton = new JButton("Bestätigen");
         submitButton.setBounds(180,270,100,30);
+        JButton backButton = new JButton("Verwerfen");
         backButton.setBounds(320,270,100,30);
 
         //Add textfield
+        JLabel lengthLabel = new JLabel("Unfallänge:");
         lengthLabel.setBounds(50,170,150,30);
         lengthInput.setBounds(170,170,50,30);
 
@@ -60,8 +58,10 @@ public class ReportAccidentUI extends JFrame{
         reportAccident.add(chooseStreetLabel);
         reportAccident.add(isSafeLabel);
         reportAccident.add(isSafeLabel);
-        reportAccident.add(StartNode);
-        reportAccident.add(EndNode);
+        JLabel startNode = new JLabel("Startknoten:");
+        reportAccident.add(startNode);
+        JLabel endNode = new JLabel("Endknoten:");
+        reportAccident.add(endNode);
         reportAccident.add(submitButton);
         reportAccident.add(lengthInput);
         reportAccident.add(lengthLabel);

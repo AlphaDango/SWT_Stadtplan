@@ -16,13 +16,10 @@ import javax.swing.*;
 public class WelcomeView extends JFrame {
 
     private final JFrame welcomeFrame = new JFrame("Stadtplan-Goslar");
-    private final JLabel welcomeLabel = new JLabel("Willkommen zum Stadtplan-Goslar");
-    private final JButton showStreetNetworkButton = new JButton("Straßennetz Anzeigen");
-    private final JButton reportAccidentButton = new JButton("Unfall Melden");
-    private final JPanel panel = new JPanel();
 
     public WelcomeView(){
         //Init welcomeLabel
+        JLabel welcomeLabel = new JLabel("Willkommen zum Stadtplan-Goslar");
         welcomeLabel.setBounds(80,10,450,300);
         welcomeLabel.setVerticalAlignment(JLabel.TOP);
         welcomeLabel.setFont(new Font("Verdana", Font.PLAIN, 25));
@@ -30,14 +27,17 @@ public class WelcomeView extends JFrame {
         welcomeLabel.setForeground(Color.blue);
 
         //Init showStreetNetworkButton
+        JButton showStreetNetworkButton = new JButton("Straßennetz Anzeigen");
         showStreetNetworkButton.setBounds(20,120,100, 40);
         showStreetNetworkButton.setSize(200, 50);
 
         //Init reportAccidentButton
+        JButton reportAccidentButton = new JButton("Unfall Melden");
         reportAccidentButton.setBounds(20,180,100, 40);
         reportAccidentButton.setSize(200, 50);
 
         //Init panel
+        JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(600,900));
         panel.setVisible(true);
         panel.setSize(200, 200);
