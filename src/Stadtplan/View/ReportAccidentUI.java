@@ -86,6 +86,8 @@ public class ReportAccidentUI extends JFrame{
             }else{
                 JOptionPane.showMessageDialog(null,
                         "Ihre Angaben wurden gespeichert.");
+                new WelcomeView();
+                reportAccident.dispose();
             }
         });
 
