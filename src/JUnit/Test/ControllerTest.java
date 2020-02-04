@@ -20,19 +20,19 @@ public class ControllerTest {
 
     @Test
     public void addUnfall_Hagenweg() {
-        boolean actual = controller.addUnfall("Hagenweg",length,state);
+        boolean actual = controller.reportAccident("Hagenweg",length,state);
         assertTrue(actual);
     }
 
     @Test
     public void addUnfall_IvalidStreet() {
-        boolean actual = controller.addUnfall("Bachstrasse",length,state);
+        boolean actual = controller.reportAccident("Bachstrasse",length,state);
         assertFalse(actual);
     }
 
     @Test
     public void addUnfall_IvalidLength(){
-        boolean actual = controller.addUnfall(street,"3,60",state);
+        boolean actual = controller.reportAccident(street,"3,60",state);
         assertFalse(actual);
     }
 }

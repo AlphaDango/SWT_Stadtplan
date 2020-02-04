@@ -1,10 +1,8 @@
 package Stadtplan.Controller;
 
 import Stadtplan.Model.StrassenAbschnitt;
-import Stadtplan.Model.Unfall;
+import Stadtplan.Model.Accident;
 import Stadtplan.Model.StreetNetwork;
-
-import javax.swing.*;
 
 public class Controller {
 
@@ -15,7 +13,7 @@ public class Controller {
     * to the StreetNetwork instance and
     * the used street instance
      */
-    public boolean addUnfall(String streetname, String s_length, boolean state) {
+    public boolean reportAccident(String streetname, String s_length, boolean state) {
         StrassenAbschnitt strassenAbschnitt = streetNetwork.getStreetByName(streetname);
         int int_length;
         try{
@@ -25,9 +23,9 @@ public class Controller {
         }
         if(strassenAbschnitt == null)
             return false;
-        Unfall unfall = new Unfall(strassenAbschnitt,int_length,state);
-        streetNetwork.addUnfall(unfall);
-        strassenAbschnitt.setVerkehrsstoerung(unfall);
+        Accident accident = new Accident(strassenAbschnitt,int_length,state);
+        streetNetwork.addAccident(accident);
+        strassenAbschnitt.setAccident(accident);
         return true;
     }
 }

@@ -1,12 +1,11 @@
 package Stadtplan.Model;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class StrassenAbschnitt {
 
 	private String name;
-	private Unfall unfall;
+	private Accident accident;
 	private ArrayList<Knoten> knots;
 	private  boolean isOneWay;
 
@@ -25,12 +24,12 @@ public class StrassenAbschnitt {
 		this.name = name;
 	}
 
-	public void setVerkehrsstoerung(Unfall unfall){
-		this.unfall = unfall;
+	public void setAccident(Accident accident){
+		this.accident = accident;
 	}
 
-	public Unfall getUnfall(){
-		return unfall;
+	public Accident getAccident(){
+		return accident;
 	}
 
 	public boolean isOneWay() {

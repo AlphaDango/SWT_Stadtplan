@@ -2,10 +2,10 @@ package Stadtplan.Model;
 /*
 *Unfall Class done like the give Domainmodel
  */
-public class Unfall extends Verkehrsstoerung {
+public class Accident extends Verkehrsstoerung {
     private boolean isSecured;
 
-    public Unfall(StrassenAbschnitt affectedStreet, int length, boolean isSecured){
+    public Accident(StrassenAbschnitt affectedStreet, int length, boolean isSecured){
         super.length = length;
         super.affectedStreet = affectedStreet;
         this.isSecured = isSecured;

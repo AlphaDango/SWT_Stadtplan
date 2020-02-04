@@ -58,7 +58,7 @@ public class StreetNetwork {
 		 return streetNames;
 	}
 
-	public void addUnfall(Unfall unfall){
-		unfaelle.add(unfall);
+	public void addAccident(Accident accident){
+		unfaelle.add(accident);
 	}
 }

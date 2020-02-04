@@ -80,7 +80,7 @@ public class ReportAccidentUI extends JFrame{
         submitButton.addActionListener(e -> {
             String name = streetName.getSelectedItem().toString();
             boolean sercured = isSecuredCheckBox.isSelected();
-            if(!controller.addUnfall(name,lengthInput.getText(),sercured)){
+            if(!controller.reportAccident(name,lengthInput.getText(),sercured)){
                 JOptionPane.showMessageDialog(null,
                         "Ungültige Längenangabe!\nBitte die Länge in ganzen Zahlen eingeben.");
             }else{

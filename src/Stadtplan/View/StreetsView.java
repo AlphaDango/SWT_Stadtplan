@@ -2,13 +2,10 @@ package Stadtplan.View;
 
 import Stadtplan.Model.StrassenAbschnitt;
 import Stadtplan.Model.StreetNetwork;
-import Stadtplan.Model.Unfall;
-import Stadtplan.Model.Verkehrsstoerung;
+import Stadtplan.Model.Accident;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -46,11 +43,11 @@ public class StreetsView {
         street0.setForeground(Color.black);
 
         strassenAbschnitt = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(0));
-        if(strassenAbschnitt.getUnfall() == null){
+        if(strassenAbschnitt.getAccident() == null){
             street0Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
         }else{
-            Unfall unfall = strassenAbschnitt.getUnfall();
-            street0Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
+            Accident accident = strassenAbschnitt.getAccident();
+            street0Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+ accident.getLength()+"m | Gesichert: "+ accident.isSecured());
         }
         street0Info.setBounds(20,90,450,300);
         street0Info.setVerticalAlignment(JLabel.TOP);
@@ -64,11 +61,11 @@ public class StreetsView {
         street1.setForeground(Color.black);
 
         strassenAbschnitt = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(1));
-        if(strassenAbschnitt.getUnfall() == null){
+        if(strassenAbschnitt.getAccident() == null){
             street1Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
         }else{
-            Unfall unfall = strassenAbschnitt.getUnfall();
-            street1Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
+            Accident accident = strassenAbschnitt.getAccident();
+            street1Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+ accident.getLength()+"m | Gesichert: "+ accident.isSecured());
         }
         street1Info.setBounds(20,190,450,300);
         street1Info.setVerticalAlignment(JLabel.TOP);
@@ -81,11 +78,11 @@ public class StreetsView {
         street2.setForeground(Color.black);
 
         strassenAbschnitt = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(2));
-        if(strassenAbschnitt.getUnfall() == null){
+        if(strassenAbschnitt.getAccident() == null){
             street2Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Keine Verkehrsstörungen vorhanden");
         }else{
-            Unfall unfall = strassenAbschnitt.getUnfall();
-            street2Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+unfall.getLength()+"m | Gesichert: "+unfall.isSecured());
+            Accident accident = strassenAbschnitt.getAccident();
+            street2Info = new JLabel("Einbahnstraße: "+strassenAbschnitt.isOneWay()+" | Unfalllänge: "+ accident.getLength()+"m | Gesichert: "+ accident.isSecured());
         }
         street2Info.setBounds(20,290,450,300);
         street2Info.setVerticalAlignment(JLabel.TOP);
