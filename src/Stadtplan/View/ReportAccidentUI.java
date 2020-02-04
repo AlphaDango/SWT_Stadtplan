@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
-
-import Stadtplan.Model.StrassenAbschnitt;
 import Stadtplan.Model.StreetNetwork;
 import Stadtplan.Controller.Controller;
 
@@ -28,7 +26,6 @@ public class ReportAccidentUI extends JFrame{
     private final JButton submitButton=new JButton("Bestätigen");
     private final JButton backButton = new JButton("Verwerfen");
     private JTextField lengthInput = new JTextField("",5);
-    private ButtonGroup buttonGroup = new ButtonGroup();
 
     public ReportAccidentUI(){
         //Init title
@@ -50,9 +47,6 @@ public class ReportAccidentUI extends JFrame{
         //Init buttons
         submitButton.setBounds(180,270,100,30);
         backButton.setBounds(320,270,100,30);
-
-        //Checkbox added to buttonGroup (but why?)
-        buttonGroup.add(isSecuredCheckBox);
 
         //Add textfield
         lengthLabel.setBounds(50,170,150,30);
@@ -77,6 +71,7 @@ public class ReportAccidentUI extends JFrame{
         reportAccident.setVisible(true);
 
         //Listeners
+
         submitButton.addActionListener(e -> {
             String name = streetName.getSelectedItem().toString();
             boolean sercured = isSecuredCheckBox.isSelected();
