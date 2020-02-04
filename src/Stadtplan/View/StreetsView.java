@@ -124,7 +124,7 @@ public class StreetsView {
 
         //Listner
         returnButton.addActionListener(e -> {
-            new WelcomeView();
+            new MainMenu();
             streetViewFrame.dispose();
         });
         streetViewFrame.addWindowListener(new WindowAdapter() {

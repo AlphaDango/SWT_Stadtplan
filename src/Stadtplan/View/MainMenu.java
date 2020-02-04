@@ -13,11 +13,11 @@ import javax.swing.*;
 * to report an traffic accident or if they want
 * to look up the current street status.
  */
-public class WelcomeView extends JFrame {
+public class MainMenu extends JFrame {
 
     private final JFrame welcomeFrame = new JFrame("Stadtplan-Goslar");
 
-    public WelcomeView(){
+    public MainMenu(){
         //Init welcomeLabel
         JLabel welcomeLabel = new JLabel("Willkommen zum Stadtplan-Goslar");
         welcomeLabel.setBounds(80,10,450,300);
@@ -27,12 +27,12 @@ public class WelcomeView extends JFrame {
         welcomeLabel.setForeground(Color.blue);
 
         //Init showStreetNetworkButton
-        JButton showStreetNetworkButton = new JButton("Straßennetz Anzeigen");
+        JButton showStreetNetworkButton = new JButton("Straßeninfos");
         showStreetNetworkButton.setBounds(20,120,100, 40);
         showStreetNetworkButton.setSize(200, 50);
 
         //Init reportAccidentButton
-        JButton reportAccidentButton = new JButton("Unfall Melden");
+        JButton reportAccidentButton = new JButton("Unfall melden");
         reportAccidentButton.setBounds(20,180,100, 40);
         reportAccidentButton.setSize(200, 50);
 

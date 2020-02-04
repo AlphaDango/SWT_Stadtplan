@@ -25,7 +25,7 @@ public class ReportAccidentUI extends JFrame{
 
     public ReportAccidentUI(){
         //Init title label
-        JLabel title = new JLabel("Unfall Melden");
+        JLabel title = new JLabel("Unfall melden");
         title.setBounds(180,20,450,300);
         title.setVerticalAlignment(JLabel.TOP);
         title.setFont(new Font("Verdana", Font.PLAIN, 25));
@@ -84,7 +84,7 @@ public class ReportAccidentUI extends JFrame{
             }else{
                 JOptionPane.showMessageDialog(null,
                         "Ihre Angaben wurden gespeichert.");
-                new WelcomeView();
+                new MainMenu();
                 reportAccident.dispose();
             }
         });
@@ -97,7 +97,7 @@ public class ReportAccidentUI extends JFrame{
             int reply = JOptionPane.showConfirmDialog(null,
                     "Möchtest du deine Angaben verwerfen?",null,JOptionPane.YES_NO_OPTION);
             if(reply == JOptionPane.YES_OPTION){
-                new WelcomeView();
+                new MainMenu();
                 reportAccident.dispose();
             }
         });

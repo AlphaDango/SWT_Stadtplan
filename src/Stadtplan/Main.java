@@ -3,7 +3,7 @@ package Stadtplan;
 import Stadtplan.Model.Node;
 import Stadtplan.Model.StreetSection;
 import Stadtplan.Model.StreetNetwork;
-import Stadtplan.View.WelcomeView;
+import Stadtplan.View.MainMenu;
 
 import java.util.ArrayList;
 
@@ -42,7 +42,7 @@ public class Main {
      */
     public static void main(String[] args) {
         fillData();
-        new WelcomeView();
+        new MainMenu();
     }
 
 }
