@@ -1,5 +1,7 @@
 package Stadtplan.Model;
-
+/*
+*Unused
+ */
 public class Baustelle extends Verkehrsstoerung {
     private String finishDate;
 

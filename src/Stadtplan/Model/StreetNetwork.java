@@ -13,7 +13,7 @@ public class StreetNetwork {
 	public StreetNetwork(){}
 
 	public StrassenAbschnitt getStreetByName(String name){
-		for(StrassenAbschnitt s : streets){
+		for(StrassenAbschnitt s : getStreets()){
 			if(s.getName().equals(name)){
 				return s;
 			}

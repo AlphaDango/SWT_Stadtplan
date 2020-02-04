@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SWT_Stadtplan.iml" filepath="$PROJECT_DIR$/SWT_Stadtplan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Stadtplan.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Stadtplan.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Stadtplan.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Stadtplan.test.iml" />
     </modules>
   </component>
 </project>

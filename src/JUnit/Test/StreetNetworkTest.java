@@ -1,28 +1,33 @@
 package JUnit.Test;
 
-import org.junit.jupiter.api.Test;
+import Stadtplan.Main;
+import Stadtplan.Model.StrassenAbschnitt;
+import Stadtplan.Model.StreetNetwork;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
-class StreetNetworkTest {
+public class StreetNetworkTest {
 
-    @Test
-    void getStreetByName() {
+    private StreetNetwork streetNetwork = new StreetNetwork();
+    private StrassenAbschnitt strassenAbschnitt;
+
+    @BeforeClass
+    public static void fillData(){
+        Main.fillData();
     }
 
     @Test
-    void getStreets() {
+    public void TestGetStreetByName() {
+        strassenAbschnitt = streetNetwork.getStreetByName("Hagenweg");
+        assertEquals(strassenAbschnitt.getName(),"Hagenweg");
     }
 
     @Test
-    void setStreets() {
-    }
-
-    @Test
-    void getStreetNames() {
-    }
-
-    @Test
-    void addUnfall() {
+    public void FailGetStreetByName(){
+        strassenAbschnitt = streetNetwork.getStreetByName("Birkenstrasse");
+        assertNull(strassenAbschnitt);
     }
 }

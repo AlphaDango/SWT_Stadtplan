@@ -1,12 +1,38 @@
 package JUnit.Test;
 
-import org.junit.jupiter.api.Test;
+import Stadtplan.Controller.Controller;
+import Stadtplan.Main;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class ControllerTest {
+    private Controller controller = new Controller();
+    private boolean state = false;
+    private String length = "10";
+    private String street = "Hagenweg";
 
-class ControllerTest {
+    @BeforeClass
+    public static void init(){
+        Main.fillData();
+    }
 
     @Test
-    void addUnfall() {
+    public void addUnfall_Hagenweg() {
+        boolean actual = controller.addUnfall("Hagenweg",length,state);
+        assertTrue(actual);
+    }
+
+    @Test
+    public void addUnfall_IvalidStreet() {
+        boolean actual = controller.addUnfall("Bachstrasse",length,state);
+        assertFalse(actual);
+    }
+
+    @Test
+    public void addUnfall_IvalidLength(){
+        boolean actual = controller.addUnfall(street,"3,60",state);
+        assertFalse(actual);
     }
 }

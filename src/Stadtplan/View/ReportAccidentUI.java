@@ -78,24 +78,13 @@ public class ReportAccidentUI extends JFrame{
 
         //Listeners
         submitButton.addActionListener(e -> {
-            String name;
-            int length;
-            boolean sercured;
-            try {
-                length = Integer.parseInt(lengthInput.getText());
-                name = streetName.getSelectedItem().toString();
-                sercured = isSecuredCheckBox.isSelected();
-            }catch (Exception exeption){
-                JOptionPane.showMessageDialog(submitButton,
-                        "Ungültige Längenangabe!");
-                lengthInput.setText("");
-                return;
-            }
-            if(!controller.addUnfall(name,length,sercured)){
-                JOptionPane.showMessageDialog(submitButton,
-                        "Fehler!");
+            String name = streetName.getSelectedItem().toString();
+            boolean sercured = isSecuredCheckBox.isSelected();
+            if(!controller.addUnfall(name,lengthInput.getText(),sercured)){
+                JOptionPane.showMessageDialog(null,
+                        "Ungültige Längenangabe!\nBitte die Länge in ganzen Zahlen eingeben.");
             }else{
-                JOptionPane.showMessageDialog(submitButton,
+                JOptionPane.showMessageDialog(null,
                         "Ihre Angaben wurden gespeichert.");
             }
         });
