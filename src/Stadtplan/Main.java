@@ -4,6 +4,7 @@ import Stadtplan.Model.Node;
 import Stadtplan.Model.StreetSection;
 import Stadtplan.Model.StreetNetwork;
 import Stadtplan.View.MainMenu;
+import Stadtplan.View.ReportAccidentUI;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,7 @@ public class Main {
      */
     public static void main(String[] args) {
         fillData();
+        new MainMenu();
         new MainMenu();
     }
 

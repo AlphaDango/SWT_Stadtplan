@@ -3,7 +3,6 @@ package Stadtplan.View;
 import Stadtplan.Model.StreetSection;
 import Stadtplan.Model.StreetNetwork;
 import Stadtplan.Model.TrafficAccident;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -14,11 +13,14 @@ import java.awt.event.WindowEvent;
 * In this GUI the user can see the
 * current street status.
  */
-public class StreetsView {
+public class StreetsView implements Observer {
 
     private final JFrame streetViewFrame = new JFrame("Stadtplan-Goslar");
+    StreetNetwork streetNetwork = new StreetNetwork();
+    JLabel street0Info, street1Info, street2Info;
 
     public StreetsView(){
+        new StreetSection().Attach(this);
         //Init panel
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(600,900));
@@ -35,7 +37,6 @@ public class StreetsView {
         title.setForeground(Color.blue);
 
         //Init streetlabels
-        StreetNetwork streetNetwork = new StreetNetwork();
         JLabel street0 = new JLabel(streetNetwork.getStreetNames().get(0) + ":");
         street0.setBounds(20,70,450,300);
         street0.setVerticalAlignment(JLabel.TOP);
@@ -43,7 +44,6 @@ public class StreetsView {
         street0.setForeground(Color.black);
 
         StreetSection streetSection = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(0));
-        JLabel street0Info;
         if(streetSection.getTrafficAccident() == null){
             street0Info = new JLabel("Einbahnstraße: "+ streetSection.isOneWay()+
                     " | Keine Verkehrsstörungen vorhanden");
@@ -65,7 +65,6 @@ public class StreetsView {
         street1.setForeground(Color.black);
 
         streetSection = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(1));
-        JLabel street1Info;
         if(streetSection.getTrafficAccident() == null){
             street1Info = new JLabel("Einbahnstraße: "+ streetSection.isOneWay()+
                     " | Keine Verkehrsstörungen vorhanden");
@@ -86,7 +85,6 @@ public class StreetsView {
         street2.setForeground(Color.black);
 
         streetSection = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(2));
-        JLabel street2Info;
         if(streetSection.getTrafficAccident() == null){
             street2Info = new JLabel("Einbahnstraße: "+ streetSection.isOneWay()+
                     " | Keine Verkehrsstörungen vorhanden");
@@ -125,6 +123,7 @@ public class StreetsView {
         //Listner
         returnButton.addActionListener(e -> {
             new MainMenu();
+            new StreetSection().Detach(this);
             streetViewFrame.dispose();
         });
         streetViewFrame.addWindowListener(new WindowAdapter() {
@@ -133,5 +132,42 @@ public class StreetsView {
                 System.exit(0);
             }
         });
+    }
+
+    @Override
+    public void update(Object obj) {
+        if(obj instanceof StreetSection){
+            StreetSection streetSection = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(0));
+            if(streetSection.getTrafficAccident() == null){
+                street0Info.setText("Einbahnstraße: "+ streetSection.isOneWay()+
+                        " | Keine Verkehrsstörungen vorhanden");
+            }else{
+                TrafficAccident trafficAccident = streetSection.getTrafficAccident();
+                street0Info.setText("Einbahnstraße: "+ streetSection.isOneWay()+
+                        " | Unfalllänge: "+ trafficAccident.getLength()+"m | Gesichert: "+ trafficAccident.isSecured());
+            }
+            //street0Info.repaint();
+            streetSection = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(1));
+            if(streetSection.getTrafficAccident() == null){
+                street1Info.setText("Einbahnstraße: "+ streetSection.isOneWay()+
+                        " | Keine Verkehrsstörungen vorhanden");
+            }else{
+                TrafficAccident trafficAccident = streetSection.getTrafficAccident();
+                street1Info.setText("Einbahnstraße: "+ streetSection.isOneWay()+
+                        " | Unfalllänge: "+ trafficAccident.getLength()+"m | Gesichert: "+ trafficAccident.isSecured());
+            }
+            //street1Info.repaint();
+            streetSection = streetNetwork.getStreetByName(streetNetwork.getStreetNames().get(2));
+            if(streetSection.getTrafficAccident() == null){
+                street2Info.setText("Einbahnstraße: "+ streetSection.isOneWay()+
+                        " | Keine Verkehrsstörungen vorhanden");
+            }else{
+                TrafficAccident trafficAccident = streetSection.getTrafficAccident();
+                street2Info.setText("Einbahnstraße: "+ streetSection.isOneWay()+
+                        " | Unfalllänge: "+ trafficAccident.getLength()+"m | Gesichert: "+ trafficAccident.isSecured());
+            }
+            //street2Info.repaint();
+            //streetViewFrame.repaint();
+        }
     }
 }
