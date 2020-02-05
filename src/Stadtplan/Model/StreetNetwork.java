@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class StreetNetwork {
 	
-	public static ArrayList<Node> nodes = new  ArrayList<>();
-	public static ArrayList<StreetSection> streets = new  ArrayList<>();
+	private static ArrayList<Node> nodes = new  ArrayList<>();
+	private static ArrayList<StreetSection> streets = new  ArrayList<>();
 	private static List<String> streetNames = new ArrayList<>();
 
 	public StreetNetwork(){}

@@ -12,11 +12,11 @@ public class Node {
 		setY(y);
 	}
 	
-	 public int[] getCoordinates() {
+	public int[] getCoordinates() {
 		return this.position;
 	}
 
-	public double getX() {
+	public int getX() {
 		return position[0];
 	}
 
@@ -24,7 +24,7 @@ public class Node {
 		position[0] = x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return position[1];
 	}
 
